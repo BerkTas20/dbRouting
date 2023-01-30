@@ -28,10 +28,10 @@ public class Author {
     private String email;
 
     public static Author create(SaveAuthorRequest request) {
-        Author student = new Author();
-        student.setEmail(request.getEmail());
-        student.setName(request.getName());
-        return student;
+        Author author = new Author();
+        author.setEmail(request.getEmail());
+        author.setName(request.getName());
+        return author;
     }
 
 }
