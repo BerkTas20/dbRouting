@@ -23,5 +23,7 @@ public class DbSettings {
     private String dbNamePostfix;
     @Value("${spring.datasource.url}")
     private String bookDatabaseName;
+    @Value("${db.setting.serverName}")
+    private String dbUrl;
 
 }

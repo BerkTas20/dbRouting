@@ -39,7 +39,7 @@ public class BookDbInitializer {
         return DataSourceBuilder.create()
                 .username(dbSettings.getUsername())
                 .password(dbSettings.getPassword())
-                .url(dbSettings.getBookDatabaseName()
+                .url(dbSettings.getDbUrl()
                         .concat(dbName)
                         .concat("?createDatabaseIfNotExist=true"))
                 .build();

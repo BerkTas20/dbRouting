@@ -62,7 +62,7 @@ public class DataSourceRouting extends AbstractDataSource {
 
         return DataSourceBuilder
                 .create()
-                .url(dbSettings.getBookDatabaseName()
+                .url(dbSettings.getDbUrl()
                         .concat(dbName)
                         .concat(dbSettings.getDbNamePostfix()))
                 .username(dbSettings.getUsername())
