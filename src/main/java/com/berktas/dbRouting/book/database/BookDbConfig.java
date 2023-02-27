@@ -33,7 +33,7 @@ public class BookDbConfig {
     }
 
     @Bean
-    public PlatformTransactionManager bookTransactionManager(@Qualifier("bookEntityManagerFactory") final EntityManagerFactory factory) {
+    public PlatformTransactionManager bookTransactionManager( @Qualifier("bookEntityManagerFactory") final EntityManagerFactory factory) {
         return new JpaTransactionManager(factory);
     }
 }

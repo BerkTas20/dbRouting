@@ -1,4 +1,4 @@
-package com.berktas.dbRouting.book.controller.requests;
+package com.berktas.dbRouting.master.book.requests;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,7 +9,8 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class UpdateBookRequest {
+public class SaveBookRequest {
+    String dbName;
     String code;
     String title;
 }

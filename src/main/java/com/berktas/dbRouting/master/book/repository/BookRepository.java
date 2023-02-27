@@ -1,6 +1,6 @@
-package com.berktas.dbRouting.book.repository;
+package com.berktas.dbRouting.master.book.repository;
 
-import com.berktas.dbRouting.book.entity.Book;
+import com.berktas.dbRouting.master.book.entity.Book;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

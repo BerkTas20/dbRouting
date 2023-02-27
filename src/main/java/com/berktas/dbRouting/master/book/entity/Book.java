@@ -1,7 +1,7 @@
-package com.berktas.dbRouting.book.entity;
+package com.berktas.dbRouting.master.book.entity;
 
-import com.berktas.dbRouting.book.controller.requests.SaveBookRequest;
-import com.berktas.dbRouting.book.controller.requests.UpdateBookRequest;
+import com.berktas.dbRouting.master.book.requests.UpdateBookRequest;
+import com.berktas.dbRouting.master.book.requests.SaveBookRequest;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;

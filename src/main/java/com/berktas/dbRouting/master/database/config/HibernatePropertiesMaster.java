@@ -1,4 +1,4 @@
-package com.berktas.dbRouting.master.database;
+package com.berktas.dbRouting.master.database.config;
 
 import org.hibernate.boot.model.naming.ImplicitNamingStrategyComponentPathImpl;
 import org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl;
@@ -9,15 +9,15 @@ import java.util.Map;
 public class HibernatePropertiesMaster {
     public static Map<String, Object> get(){
         Map<String, Object> properties = new HashMap<>();
-        properties.put("hibernate.hbm2ddl.auto", "");
+        properties.put("hibernate.hbm2ddl.auto", "update");
         properties.put("hibernate.dialect", "org.hibernate.dialect.MySQL8Dialect");
 
         properties.put("hibernate.show_sql", "true");
         properties.put("logging.level.org.hibernate.SQL", "warning");
-        //properties.put("spring.jpa.hibernate.c3p0.min_size", "5");
-        //properties.put("spring.jpa.hibernate.c3p0.max_size", "20");
-        //properties.put("spring.jpa.hibernate.c3p0.acquire_increment", "5");
-        //properties.put("spring.jpa.hibernate.c3p0.timeout", "60");
+        properties.put("spring.jpa.hibernate.c3p0.min_size", "5");
+        properties.put("spring.jpa.hibernate.c3p0.max_size", "20");
+        properties.put("spring.jpa.hibernate.c3p0.acquire_increment", "5");
+        properties.put("spring.jpa.hibernate.c3p0.timeout", "60");
         properties.put("serverTimezone","Europe/Istanbul");
         properties.put("AllowPublicKeyRetrieval","false");
 

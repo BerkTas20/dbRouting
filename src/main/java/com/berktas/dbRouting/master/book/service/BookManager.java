@@ -1,12 +1,12 @@
-package com.berktas.dbRouting.book.service;
+package com.berktas.dbRouting.master.book.service;
 
-import com.berktas.dbRouting.book.controller.requests.SaveBookRequest;
-import com.berktas.dbRouting.book.controller.requests.UpdateBookRequest;
+import com.berktas.dbRouting.master.book.requests.UpdateBookRequest;
+import com.berktas.dbRouting.master.book.entity.Book;
+import com.berktas.dbRouting.master.book.repository.BookRepository;
+import com.berktas.dbRouting.master.book.requests.SaveBookRequest;
 import com.berktas.dbRouting.book.database.BookDbInitializer;
 import com.berktas.dbRouting.book.database.DataSourceRouting;
 import com.berktas.dbRouting.book.database.DbSettings;
-import com.berktas.dbRouting.book.entity.Book;
-import com.berktas.dbRouting.book.repository.BookRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

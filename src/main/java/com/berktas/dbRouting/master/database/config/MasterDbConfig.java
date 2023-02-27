@@ -1,10 +1,11 @@
-package com.berktas.dbRouting.master.database;
+package com.berktas.dbRouting.master.database.config;
 
 import com.berktas.dbRouting.book.database.DbSettings;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -23,13 +24,12 @@ import javax.sql.DataSource;
 public class MasterDbConfig {
     private final DbSettings dbSettings;
     @Bean
+    @Primary
     public LocalContainerEntityManagerFactoryBean masterEntityManager() {
         LocalContainerEntityManagerFactoryBean em
                 = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(masterDataSource());
-        em.setPackagesToScan(
-                "com.berktas.dbRouting.master");
-
+        em.setPackagesToScan("com.berktas.dbRouting.master");
         HibernateJpaVendorAdapter vendorAdapter
                 = new HibernateJpaVendorAdapter();
         em.setJpaVendorAdapter(vendorAdapter);
@@ -38,12 +38,12 @@ public class MasterDbConfig {
         return em;
     }
 
-    @Bean("masterDataSource")
+    @Bean
     public DataSource masterDataSource() {
         return DataSourceBuilder.create()
+                .url(dbSettings.getMasterDatabaseName())
                 .username(dbSettings.getUsername())
                 .password(dbSettings.getPassword())
-                .url(dbSettings.getDbUrl() + dbSettings.getMasterDatabaseName() + "?createDatabaseIfNotExist=true")
                 .build();
     }
 
@@ -51,8 +51,7 @@ public class MasterDbConfig {
     public PlatformTransactionManager masterTransactionManager() {
         JpaTransactionManager transactionManager
                 = new JpaTransactionManager();
-        transactionManager.setEntityManagerFactory(
-                masterEntityManager().getObject());
+        transactionManager.setEntityManagerFactory(masterEntityManager().getObject());
         return transactionManager;
     }
 }

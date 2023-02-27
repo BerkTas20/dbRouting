@@ -1,6 +1,6 @@
 package com.berktas.dbRouting.book.database;
 
-import com.berktas.dbRouting.book.entity.Book;
+import com.berktas.dbRouting.master.book.entity.Book;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.jdbc.datasource.AbstractDataSource;
@@ -22,14 +22,15 @@ public class DataSourceRouting extends AbstractDataSource {
 
     private String dbName;
 
-
     @Override
     public Connection getConnection() throws SQLException {
-        return this.determineTargetDataSource().getConnection();    }
+        return this.determineTargetDataSource().getConnection();
+    }
 
     @Override
     public Connection getConnection(String username, String password) throws SQLException {
-        return this.determineTargetDataSource().getConnection(username, password);    }
+        return this.determineTargetDataSource().getConnection(username, password);
+    }
 
     public DataSource determineTargetDataSource() {
         String lookupKey = dbName;
@@ -44,7 +45,7 @@ public class DataSourceRouting extends AbstractDataSource {
     }
 
     public void setDbName(String dbName) {
-        this.dbName = dbName;
+        this.dbName = dbSettings.getDbNamePrefix().concat(dbName);
     }
 
     public static void execute(Book book) {
@@ -62,7 +63,7 @@ public class DataSourceRouting extends AbstractDataSource {
 
         return DataSourceBuilder
                 .create()
-                .url(dbSettings.getDbUrl()
+                .url(dbSettings.getBookDatabaseName()
                         .concat(dbName)
                         .concat(dbSettings.getDbNamePostfix()))
                 .username(dbSettings.getUsername())
@@ -78,4 +79,5 @@ public class DataSourceRouting extends AbstractDataSource {
         }
         return null;
     }
+
 }
